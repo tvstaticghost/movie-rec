@@ -9,15 +9,16 @@ function runApi() {
 
     fetch(apiUrl)
         .then(response => response.json())
-        .then(ray => {
+        .then(data => {
             const movieInfoElement = document.getElementById('movie-info');
-            movieInfoElement.innerHTML = `<h2>${ray.Title}</h2>
-                                        <p>Released: ${ray.Year}</p>
-                                        <p>Genre: ${ray.Genre}</p>
-                                        <p>Rated: ${ray.Rated}</p>
-                                        <p>Plot: ${ray.Plot}</p>
-                                        <p>Rotten Tomatoes Score: ${ray.Ratings[1].Value}</p>
-                                        <img src="${ray.Poster}" alt="${ray.Title} Poster">`;
+            movieInfoElement.innerHTML = `<div class="movie__info">
+                                        <h2>${data.Title}</h2>
+                                        <p><strong>Released:</strong> ${data.Year}</p>
+                                        <p><strong>Genre:</strong> ${data.Genre}</p>
+                                        <p><strong>Rated:</strong> ${data.Rated}</p>
+                                        <p><strong>Plot:</strong> ${data.Plot}</p>
+                                        <p><strong>Rotten Tomatoes Score:</strong> ${data.Ratings[1].Value}</p>
+                                        <img src="${data.Poster}" alt="${data.Title} Poster"></div>`;
         })
         .catch(error => console.error('Error fetching data:', error));
 }
