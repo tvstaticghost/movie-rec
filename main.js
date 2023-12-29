@@ -11,14 +11,45 @@ function runApi() {
         .then(response => response.json())
         .then(data => {
             const movieInfoElement = document.getElementById('movie-info');
-            movieInfoElement.innerHTML = `<div class="movie__info">
+            let genres = data.Genre;
+
+            const genreSplit = splitString(genres);
+            
+            let genreBubbles = '';
+            for (let i = 0; i < genreSplit.length; i++) {
+                genreBubbles += `<span class="genre__bubble">${genreSplit[i]}</span>`;
+            }
+
+            movieInfoElement.innerHTML = `<div class="movie__wrapper">
+                                        <div class="movie__info">
                                         <h2>${data.Title}</h2>
-                                        <p><strong>Released:</strong> ${data.Year}</p>
-                                        <p><strong>Genre:</strong> ${data.Genre}</p>
-                                        <p><strong>Rated:</strong> ${data.Rated}</p>
-                                        <p><strong>Plot:</strong> ${data.Plot}</p>
+                                        <img src="${data.Poster}" alt="${data.Title} Poster">
+                                        <div class="movie__metadata">
+                                            <p>${data.Year}</p>
+                                            <p>${data.Rated}</p>
+                                            <p>${data.Runtime}</p>
+                                        </div>
+                                        </div>
+                                        <div class="movie__desc">
                                         <p><strong>Rotten Tomatoes Score:</strong> ${data.Ratings[1].Value}</p>
-                                        <img src="${data.Poster}" alt="${data.Title} Poster"></div>`;
+                                        <p></strong> ${data.Plot}</p>
+                                        <p>${genreBubbles}</p>
+                                        </div>
+                                        </div>`;
         })
         .catch(error => console.error('Error fetching data:', error));
+}
+
+function splitString(string) {
+    const wordsArray = [];
+    let stringWithoutCommas = '';
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] !== ',') {
+            stringWithoutCommas += string[i];
+        }
+    }
+
+    const arrayResult = stringWithoutCommas.split(' ');
+
+    return arrayResult;
 }
