@@ -5,7 +5,7 @@ startBtn.addEventListener('click', runApi);
 function runApi() {
     const apiKey = 'b4381557';
     const movieTitle = document.getElementById('movie-input').value;
-    const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}`;
+    const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&t=${movieTitle}`;
 
     fetch(apiUrl)
         .then(response => response.json())
