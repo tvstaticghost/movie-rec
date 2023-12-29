@@ -29,7 +29,7 @@ function runApi() {
             }
 
             movieInfoElement.innerHTML = `<div class="movie__wrapper">
-                                        <div class="movie__info rolled__edge" id="movie-picture">
+                                        <div class="movie__picture rolled__edge" id="movie-picture">
                                         <h2>${data.Title}</h2>
                                         <img src="${data.Poster}" alt="${data.Title} Poster">
                                         <div class="movie__metadata">
