@@ -41,7 +41,6 @@ function runApi() {
 }
 
 function splitString(string) {
-    const wordsArray = [];
     let stringWithoutCommas = '';
     for (let i = 0; i < string.length; i++) {
         if (string[i] !== ',') {

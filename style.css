@@ -63,11 +63,11 @@ input:focus {
     background-color: var(--white);
 }
 
-.socials {
+.icons {
     display: flex;
 }
 
-.socials > a:hover {
+.icons > a:hover {
     opacity: 0.6;
 }
 
